@@ -115,7 +115,7 @@ def generate_instagram_post(summaries, query):
 def main():
     st.title("Tech Article Summariser")
 
-    query = st.text_input("Enter your query:", "Microsoft Azure VS AWS 2023")
+    query = st.text_input("Enter your query:")
 
     if st.button("Generate Summary"):
         st.write("Searching for articles...")
