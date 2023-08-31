@@ -2,7 +2,7 @@
 
 This application fetches relevant articles based on a query, summarises the content, and then creates a compelling Instagram post based on the summarised content.
 
-This idea ws inspired by AIJason!
+This idea was inspired by AIJason!
 
 ## Getting Started
 
