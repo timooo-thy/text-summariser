@@ -2,6 +2,8 @@
 
 This application fetches relevant articles based on a query, summarises the content, and then creates a compelling Instagram post based on the summarised content.
 
+This idea was inspired by AIJason!
+
 ## Getting Started
 
 Follow these steps to set up and run the Streamlit app on your local machine.
