@@ -6,6 +6,7 @@ import openai
 from langchain import OpenAI, LLMChain, PromptTemplate
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.document_loaders import UnstructuredURLLoader
+from langchain.chat_models import ChatOpenAI
 import streamlit as st
 
 
@@ -33,7 +34,7 @@ def search(query, api_key):
 
 def get_best_articles(res_json, query):
     res_str = json.dumps(res_json)
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
     template = """
     You are a professional researcher and tech expert. 
     Given the topic "{res_str}", the following are the search results for the query "{query}". 
@@ -58,7 +59,7 @@ def extract_content_from_urls(url_list):
 def summarise(data, query):
     text_splitter = CharacterTextSplitter(separator="\n", chunk_size=3000, chunk_overlap=200, length_function=len)
     text = text_splitter.split_documents(data)
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.4)
     template = """
         {text}
 
@@ -83,7 +84,7 @@ def summarise(data, query):
 
 def generate_instagram_post(summaries, query):
     summaries_str = str(summaries)
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
     template = """
         {text}
         You are an esteemed tech journalist, 
@@ -115,7 +116,7 @@ def generate_instagram_post(summaries, query):
 def main():
     st.title("Tech Article Summariser")
 
-    query = st.text_input("Enter your query:")
+    query = st.text_input("Enter your query:", "Tesla full self-driving 2023")
 
     if st.button("Generate Summary"):
         st.write("Searching for articles...")
